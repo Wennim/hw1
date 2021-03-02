@@ -25,8 +25,10 @@ with open(cwb_filename) as csvfile:
 # Analyze data depend on your group and store it to target_data like:
 # Retrive all data points which station id is "C0X260" as a list.
 
+id=['C0A880','C0F9A0','C0G640','C0R190','C0X260']
+
 station_data=[]
-for station in ['C0A880','C0F9A0','C0G640','C0R190','C0X260']:
+for station in id :
   station_data.append(list(filter(lambda item: item['station_id'] == station, data)))
   
 
@@ -35,8 +37,9 @@ for i in range(5) :
 
 target_data=[]
 for i in range(5) :
-  target_data.append([station_data[i][0]["station_id"],station_data[i][0]["TEMP"]])
+  try: target_data.append([id[i],station_data[i][0]["TEMP"]])
 
+  except :target_data.append([id[i],'None'])
 #=======================================
 # Part. 4
 #=======================================
